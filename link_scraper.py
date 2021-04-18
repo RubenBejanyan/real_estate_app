@@ -20,20 +20,20 @@ category_links = []
 category_dict = dict()
 
 for i in categories:
-    category_links.append(f"{BASE_URL}{i}")
+    category_links.append(f"{BASE_URL}{i}")  # use list comprehension
 
 for link in category_links:
     key = os.path.basename(link)
     response = requests.get(link, headers={
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0"
+        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0"  # i think this only works in your case
     })
     if response.status_code == 200:
-        with open(fr".\Categories\Listam_category_{categories[key]}.html", "wb+") as file:
+        with open(fr".\Categories\Listam_category_{categories[key]}.html", "wb+") as file:  # better to use path for crossplatform code
             file.write(response.content)
     else:
         print(response.text)
 
-    with open(fr".\Categories\Listam_category_{categories[key]}.html", "rb+") as html_file:
+    with open(fr".\Categories\Listam_category_{categories[key]}.html", "rb+") as html_file:  # I don't understand why you write some data in the file, and then read
         data = html_file.read()
 
     soup = BeautifulSoup(data, 'lxml')
