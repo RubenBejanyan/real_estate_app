@@ -30,8 +30,9 @@ class LinkScraper:
         self.link_list_file = os.path.join(dir_path, "link_list.txt")
         with open(self.link_list_file, 'a+') as link_list:
             for tag in a_tags:
-                if "category" not in tag["href"] and not self.already_in_link_list(f"{self.base_url}{tag['href']}\n"):
-                    link_list.write(f"{self.base_url}{tag['href']}\n")
+                if "category" not in tag["href"] and "Փնտրում եմ" not in tag.text:
+                    if not self.already_in_link_list(f"{self.base_url}{tag['href']}\n"):
+                        link_list.write(f"{self.base_url}{tag['href']}\n")
 
     def link_generator(self):
         with open(self.link_list_file, 'r') as link_list:
@@ -40,13 +41,11 @@ class LinkScraper:
 
     def already_in_link_list(self, link_to_check):
         with open(self.link_list_file, 'r+') as link_list:
-            if link_to_check in link_list.readlines():
-                return True
-            return False
+            return link_to_check in link_list.readlines()
 
 
 if __name__ == '__main__':
     ls = LinkScraper(link_list_file=os.path.join('.', 'Links', 'link_list.txt'))
-    # ls.create_link_list()
+    ls.create_link_list()
     for link in ls.link_generator():
         print(link)
