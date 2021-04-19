@@ -14,10 +14,10 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 
 
 
 class LinkScraper:
-    def __init__(self, category_url="https://www.list.am/category/60"):
+    def __init__(self, link_list_file=None, category_url="https://www.list.am/category/60"):
         self.base_url = "https://www.list.am"
         self.category_url = category_url
-        self.link_list_file = None
+        self.link_list_file = link_list_file
 
     def create_link_list(self):
         response = requests.get(self.category_url, headers={'User-Agent': USER_AGENT})
@@ -30,7 +30,7 @@ class LinkScraper:
         self.link_list_file = os.path.join(dir_path, "link_list.txt")
         with open(self.link_list_file, 'a+') as link_list:
             for tag in a_tags:
-                if "category" not in tag["href"]:
+                if "category" not in tag["href"] and not self.already_in_link_list(f"{self.base_url}{tag['href']}\n"):
                     link_list.write(f"{self.base_url}{tag['href']}\n")
 
     def link_generator(self):
@@ -38,9 +38,15 @@ class LinkScraper:
             for _link in link_list:
                 yield _link[:-1]
 
+    def already_in_link_list(self, link_to_check):
+        with open(self.link_list_file, 'r+') as link_list:
+            if link_to_check in link_list.readlines():
+                return True
+            return False
+
 
 if __name__ == '__main__':
-    ls = LinkScraper()
-    ls.create_link_list()
+    ls = LinkScraper(link_list_file=os.path.join('.', 'Links', 'link_list.txt'))
+    # ls.create_link_list()
     for link in ls.link_generator():
         print(link)
