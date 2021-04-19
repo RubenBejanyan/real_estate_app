@@ -36,7 +36,7 @@ class LinkScraper:
     def link_generator(self):
         with open(self.link_list_file, 'r') as link_list:
             for _link in link_list:
-                yield _link
+                yield _link[:-1]
 
 
 if __name__ == '__main__':
