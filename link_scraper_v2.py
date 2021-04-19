@@ -4,6 +4,14 @@ from bs4 import BeautifulSoup
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0"
 
+# categories = {
+#     "60": "bn",  # bnakaranner -> index = bn
+#     "62": "tn",  # tner -> index = tn
+#     "55": "hogh",  # hoghataracq -> index = hogh
+#     "199": "kom",  # komercion -> index = kom
+#     "173": "avto"  # avtotnakner & kayanateghi -> index = avto
+# }
+
 
 class LinkScraper:
     def __init__(self, category_url="https://www.list.am/category/60"):
