@@ -24,7 +24,7 @@ class LinkScraper:
         data = response.content
         soup = BeautifulSoup(data, 'lxml')
         divs = soup.find_all('div', attrs={"class": "dl"})
-        a_tags = divs[0].find_all('a') + divs[1].find_all('a')
+        a_tags = divs[0].find_all('a') + divs[1].find_all('a') if len(divs) > 1 else divs.find_all('a')
         dir_path = os.path.join('.', 'Links')
         os.makedirs(dir_path, exist_ok=True)  # create ./Links directory, if it already exist, do nothing
         self.link_list_file = os.path.join(dir_path, "link_list.txt")
