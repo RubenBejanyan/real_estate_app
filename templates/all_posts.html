@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Posts
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Real estate posts</h1>
+    {% if all_posts|length > 0 %}
+        {% for post in all_posts %}
+        <div class="alert alert-info">
+            <img src="{{ post.img }}" alt="">
+
+            <p>Price: {{ post.price }}</p>
+            <p><b>Area: {{ post.area }}</b></p>
+            <a href="#">More information</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No new posts</p>
+    {% endif %}
+</div>
+{% endblock %}
