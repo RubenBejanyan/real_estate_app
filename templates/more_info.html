@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}
+More information
+{% endblock %}
+
+{% block body %}
+
+<style>
+    .location_img {
+      position: absolute;
+      top: 9%;
+      left: 10%;
+    }
+
+
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      position: absolute ;
+      width: 50%;
+      height : 10%;
+      top: 500px;
+      left: 10%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+
+<div class="container">
+    <h1 class="location_img">
+        <img src="{{ one_post.img }}" style="width:400px;height:400px;" alt="No image found ">
+    </h1>
+
+    <table >
+        <tr>
+            <td><b>Address</b></td>
+            <td>{{ city.name }} , {{ one_post.address }}</td>
+        </tr>
+        <tr>
+            <td><b>Area</b></td>
+            <td>{{ one_post.area }} <font size = "3" > մ </font>&sup2;</td>
+        </tr>
+        <tr>
+            <td><b>Price</b></td>
+            <td>{{ one_post.price }} {{ currency.currency_name}} </td>
+        </tr>
+        <tr>
+            <td><b>Building type</b></td>
+            <td>{{ one_post.building_type }}</td>
+        </tr>
+        <tr>
+            <td><b>New building</b></td>
+            <td>{{ one_post.new_building }}</td>
+        </tr>
+        <tr>
+            <td><b>Rooms</b></td>
+            <td>{{ one_post.rooms }}</td>
+        </tr>
+        <tr>
+            <td><b>Restrooms</b></td>
+            <td>{{ one_post.restrooms }}</td>
+        </tr>
+        <tr>
+            <td><b>Floor</b></td>
+            <td>{{ one_post.floor }} / {{ one_post.max_floor }} </td>
+        </tr>
+        <tr>
+            <td><b>Elevator</b></td>
+            <td>{{ one_post.elevator }}</td>
+        </tr>
+        <tr>
+            <td><b>Ceiling height</b></td>
+            <td>{{ one_post.ceiling_height }}</td>
+        </tr>
+        <tr>
+            <td><b>Balcony</b></td>
+            <td>{{ one_post.balcony }}</td>
+        </tr>
+        <tr>
+            <td><b>Renovation</b></td>
+            <td>{{ one_post.renovation }}</td>
+        </tr>
+        <tr>
+            <td><b>Source</b></td>
+            <td><a href="https://www.list.am/item/{{ one_post.id }}" class="">Orignial post</a></td>
+        </tr>
+
+    </table>
+
+</div>
+{% endblock %}

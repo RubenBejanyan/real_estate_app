@@ -1,0 +1,39 @@
+{% extends 'base_posts.html' %}
+
+
+{% block priceblock %}
+<input class="ext" type="text" maxlength="10" value="" name="price1" id="idprice1" pattern="\d*" placeholder="min" >..
+<input class="ext" type="text" maxlength="10" value="" name="price2" id="idprice2" pattern="\d*" placeholder="max" >
+{% endblock %}
+
+
+{% block sub_block %}
+    <div class="container">
+        <h1>Real estate posts</h1>
+        {% if all_posts.items|length > 0 %}
+        {% for i in range(all_posts.items|length) %}
+        <div class="alert post_style">
+            <img src="{{ all_posts.items[i].img }}" alt="No image found" style="width:300px;height:300px;">
+
+            <p>Price: {{ all_posts.items[i].price }} {{ all_currency[i].currency_name }}</p>
+            <p><b>Area: {{ all_posts.items[i].area }} sq.m.</b></p>
+            <a href="/item/{{ all_posts.items[i].id }}" class="btn btn-warning">More information</a>
+        </div>
+        {% endfor %}
+        {% for page_num in all_posts.iter_pages() %}
+            {% if page_num %}
+                {% if all_posts.page == page_num %}
+                    <a href="{{ url_for('all_posts', page=page_num) }}" class="btn btn-info mb-4">{{ page_num }}</a>
+                {% else %}
+                    <a href="{{ url_for('all_posts', page=page_num) }}" class="btn btn-outline-info mb-4">{{ page_num }}</a>
+                {% endif %}
+            {% else %}
+            ...
+            {% endif %}
+        {% endfor %}
+        {% else %}
+        <p>No new posts</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <style>
+    .location {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 90%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,77 +29,23 @@
       <div class="collapse navbar-collapse" id="navbarsExample07">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+            <a class="nav-link " aria-current="page" href="/home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/posts">Posts</a>
+            <a class="nav-link " aria-current="page" href="/posts">Posts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">About us</a>
+              <div class="location">
+                  <a class="nav-link" href="/about">About us</a>
+              </div>>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Eleventh navbar example">
-      <div class="container-fluid">
-        <h2>Filters</h2>
 
-        <div class="collapse navbar-collapse" id="navbarsExample09">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown1" data-bs-toggle="dropdown" aria-expanded="false">City</a>
-              <ul class="dropdown-menu" aria-labelledby="dropdown1">
-                <li><a class="dropdown-item" href="#">Yerevan</a></li>
-                <li><a class="dropdown-item" href="#">Abovyan</a></li>
-                <li><a class="dropdown-item" href="#">Ararat</a></li>
-                <li><a class="dropdown-item" href="#">Armavir</a></li>
-                <li><a class="dropdown-item" href="#">Artashat</a></li>
-                <li><a class="dropdown-item" href="#">Ashtarak</a></li>
-                <li><a class="dropdown-item" href="#">Ejmiacin</a></li>
-                <li><a class="dropdown-item" href="#">Gavar</a></li>
-                <li><a class="dropdown-item" href="#">Gyumri</a></li>
-                <li><a class="dropdown-item" href="#">Hrazdan</a></li>
-                <li><a class="dropdown-item" href="#">Kapan</a></li>
-                <li><a class="dropdown-item" href="#">Stepanavan</a></li>
-                <li><a class="dropdown-item" href="#">Vanadzor</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown2" data-bs-toggle="dropdown" aria-expanded="false">Rooms</a>
-              <ul class="dropdown-menu" aria-labelledby="dropdown2">
-                <li><a class="dropdown-item" href="#">1</a></li>
-                <li><a class="dropdown-item" href="#">2</a></li>
-                <li><a class="dropdown-item" href="#">3</a></li>
-                <li><a class="dropdown-item" href="#">4</a></li>
-                <li><a class="dropdown-item" href="#">5</a></li>
-                <li><a class="dropdown-item" href="#">5+</a></li>
-
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown3" data-bs-toggle="dropdown" aria-expanded="false">New Building</a>
-              <ul class="dropdown-menu" aria-labelledby="dropdown3">
-                <li><a class="dropdown-item" href="#">Yes</a></li>
-                <li><a class="dropdown-item" href="#">No</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Twelfth navbar example">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-    </nav>
 </head>
-
+</div>
 <body>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>

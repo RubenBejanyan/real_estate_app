@@ -50,7 +50,9 @@ class ScraperMixin:
         :return: info dict with converted values types
         """
         info_dict['id'] = ScraperMixin.change_to_int(info_dict['id'])
-        info_dict['update_date'] = ScraperMixin.change_to_datetime(info_dict['update_date'])
+        info_dict['creation_date'] = ScraperMixin.change_to_datetime(info_dict['creation_date'])
+        if 'update_date' in info_dict.keys():
+            info_dict['update_date'] = ScraperMixin.change_to_datetime(info_dict['update_date'])
 
         if 'price' in info_dict.keys():
             info_dict['price'] = ScraperMixin.change_to_int(info_dict['price'])

@@ -60,9 +60,9 @@ class InfoScraper(AbstractScraper, ScraperMixin):
         :param soup: The beautifulsoup element from where you want to parse the add id and update(creation) date
         """
         self._apartment_info_dict['id'] = soup[0].text.split(':')[-1].strip()
-        # check if add have update date(third element), take it else take creation date(second element)
-        i = 2 if len(soup) > 2 else 1
-        self._apartment_info_dict['update_date'] = soup[i].text.split(':', maxsplit=1 if i == 2 else -1)[-1].strip()
+        self._apartment_info_dict['creation_date'] = soup[1].text.split(':')[-1].strip()
+        if len(soup) > 2:
+            self._apartment_info_dict['update_date'] = soup[2].text.split(':', maxsplit=1)[-1].strip()
 
     def _table_scraper(self, soup: bs4.element) -> None:
         """
