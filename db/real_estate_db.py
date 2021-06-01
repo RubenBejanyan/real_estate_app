@@ -17,10 +17,12 @@ class RealEstateDB:
             if not self.session.query(Currency).filter(Currency.currency_name == currency).one_or_none():
                 self.add_currency(currency)
             apartment_in_db = self.session.query(Apartment).filter(Apartment.id == data["id"]).one_or_none()
-            if apartment_in_db and apartment_in_db.update_date != data['update_date']:
-                self.session.delete(apartment_in_db)
-                self.add_apartment(data, currency, city)
-            elif not apartment_in_db:
+
+            if apartment_in_db:
+                if 'update_date' in data.keys() and apartment_in_db.update_date != data['update_date']:
+                    self.session.delete(apartment_in_db)
+                    self.add_apartment(data, currency, city)
+            else:
                 self.add_apartment(data, currency, city)
             self.session.commit()
         self.session.close()

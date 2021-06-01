@@ -15,7 +15,7 @@ class Apartment(db.Model):
     floor = db.Column("floor", db.Integer)
     max_floor = db.Column("max_floor", db.Integer)
     rooms = db.Column("rooms", db.Integer)
-    restrooms = db.Column("restrooms", db.String)
+    restrooms = db.Column("restrooms", db.Integer)
     area = db.Column("area", db.Integer)
     ceiling_height = db.Column("ceiling_height", db.String)
     balcony = db.Column("balcony", db.String)

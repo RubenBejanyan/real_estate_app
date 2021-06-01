@@ -5,6 +5,17 @@
     <input class="ext" type="text" maxlength="10" value="{{ price2 }}" name="price2" id="idprice2" pattern="\d*" placeholder="max" >
 {% endblock %}
 
+{% block areablock %}
+    <input class="ext" type="text" maxlength="10" value="{{ area1 }}" name="area1" id="idarea1" pattern="\d*" placeholder="min" >
+    <input class="ext" type="text" maxlength="10" value="{{ area2 }}" name="area2" id="idarea2" pattern="\d*" placeholder="max" >
+{% endblock %}
+
+{% block floorblock %}
+    <input class="ext" type="text" maxlength="10" value="{{ floor1 }}" name="floor1" id="idfloor1" pattern="\d*" placeholder="min" >
+    <input class="ext" type="text" maxlength="10" value="{{ floor2 }}" name="floor2" id="idfloor2" pattern="\d*" placeholder="max" >
+{% endblock %}
+
+
 {% block sub_block %}
 
     <div class="container">
@@ -23,9 +34,9 @@
         {% for page_num in filtred.iter_pages() %}
             {% if page_num %}
                 {% if filtred.page == page_num %}
-                    <a href="{{ url_for('all_posts', page=page_num) }}" class="btn btn-info mb-4">{{ page_num }}</a>
+                    <a href="{{ url_for('filtered_posts', page= page_num)}}?{{request.query_string.decode()}}" class="btn btn-info mb-4">{{ page_num }}</a>
                 {% else %}
-                    <a href="{{ url_for('all_posts', page=page_num) }}" class="btn btn-outline-info mb-4">{{ page_num }}</a>
+                    <a href="{{ url_for('filtered_posts', page= page_num)}}?{{request.query_string.decode()}}" class="btn btn-outline-info mb-4">{{ page_num }}</a>
                 {% endif %}
             {% else %}
             ...

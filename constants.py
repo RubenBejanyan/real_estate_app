@@ -15,3 +15,9 @@ ISO_CODE_DICT = {"USD": "840",
                  "AMD": "51",
                  "EURO": "978"}
 DB_NAME = 'real_estate'
+MIN_PRICE = 0
+MAX_PRICE = 100000000
+MIN_AREA = 0
+MAX_AREA = 100000
+MIN_FLOOR = 1
+MAX_FLOOR = 25

@@ -51,8 +51,8 @@ Posts
         <div>
             <h2 style="">Filters</h2>
 
-                <form method="POST" style="display: inline-block">
-                    {{ form.csrf_token }}
+                <form method="GET" action="{{ url_for('filtered_posts') }}" style="display: inline-block">
+                    <!-- {{ form.csrf_token }} -->
                     <div class="at">
                         <div id="form1">City: </div>
                     </div>
@@ -65,6 +65,55 @@ Posts
                     </div>
                     <div>
                         <div id="form2_child">{{ form.rooms }}</div>
+                    </div>
+
+                    <div class="at">
+                        <div id="form4">Restrooms: </div>
+                    </div>
+                    <div id="form4_child">
+                        <div>{{ form.restroom }}</div>
+                    </div>
+
+                    <div class="at">
+                        <div id="form9">Area: </div>
+                    </div>
+                    <div id="form9_child">
+                        {% block areablock %}{% endblock %}
+                    </div>
+
+                    <div class="at">
+                        <div id="form10">Floor: </div>
+                    </div>
+                    <div id="form10_child">
+                        {% block floorblock %}{% endblock %}
+                    </div>
+
+                    <div class="at">
+                        <div id="form5">Building type: </div>
+                    </div>
+                    <div id="form5_child">
+                        <div>{{ form.building_type }}</div>
+                    </div>
+
+                    <div class="at">
+                        <div id="form6">New Building: </div>
+                    </div>
+                    <div id="form6_child">
+                        <div>{{ form.new_building }}</div>
+                    </div>
+
+                    <div class="at">
+                        <div id="form7">Renovation: </div>
+                    </div>
+                    <div id="form7_child">
+                        <div>{{ form.renovation }}</div>
+                    </div>
+
+                    <div class="at">
+                        <div id="form8">Currency: </div>
+                    </div>
+                    <div id="form8_child">
+                        <div>{{ form.currency }}</div>
                     </div>
 
                     <div class="at">
