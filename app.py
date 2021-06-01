@@ -15,7 +15,7 @@ class Form(FlaskForm):
     city = SelectField('city', choices=[])
     building_type = SelectField('building_type', choices=[])
     renovation = SelectField('renovation', choices=[])
-    new_building = SelectField('new_building', choices=[(1, "Yes"), (2, 'No')])
+    new_building = SelectField('new_building', choices=[(1, "Yes"), (0, 'No')])
     rooms = SelectField('rooms', choices=[(i, str(i)) for i in range(1, 5)] + [(5, "5+")])
     restroom = SelectField('restroom', choices=[(i, str(i)) for i in range(1, 3)] + [(3, "3+")])
     currency = SelectField('currency', choices=[])
@@ -79,8 +79,8 @@ def filtered_posts(page: int):
     city_id = request.args.get('city')
 
     filtered = Apartment.query.filter(Apartment.city_id == city_id,
-                                      Apartment.rooms == rooms if rooms != "5" else Apartment.rooms > 5,
-                                      Apartment.restrooms == rest if rest != "3" else Apartment.restrooms > 3,
+                                      Apartment.rooms == rooms if rooms != "5" else Apartment.rooms > 4,
+                                      Apartment.restrooms == rest if rest != "3" else Apartment.restrooms > 2,
 
                                       (price1 if price1 != '' else MIN_PRICE) <= Apartment.price,  # Price Filtering
                                       Apartment.price <= (price2 if price2 != '' else MAX_PRICE),
